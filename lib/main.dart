@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'viewmodels/article_viewmodel.dart';
-import 'views/home_page.dart';
+import 'viewmodels/coin_viewmodel.dart';
+import 'views/coin_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => ArticleViewModel()..loadArticles(),
+      create: (context) => CoinViewModel()..loadCoins(),
       child: MaterialApp(
-        title: 'Week 6 API Consumer App',
-        theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
-        home: const HomePage(),
+        title: 'Crypto Market App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const CoinListPage(),
       ),
     );
   }
